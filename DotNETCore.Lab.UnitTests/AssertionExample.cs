@@ -147,19 +147,19 @@ namespace DotNETCore.Lab.UnitTests
         [Fact]
         public void ExpectedObjects_SingleObj_Demo()
         {
-            var expected = new Phone { Brand = Brand.Apple, Price = 399m };
+            var expected = new Phone { Brand = Brand.Apple, Price = 399m }.ToExpectedObject();
             var result = new Phone { Brand = Brand.Apple, Price = 399m };
 
-            expected.ToExpectedObject().ShouldMatch(result);
+            expected.ShouldMatch(result);
         }
 
         [Fact]
         public void ExpectedObjects_SingleObjWithAnonymousType_Demo()
         {
-            var expected = new { Brand = Brand.Apple, Price = 399m };
+            var expected = new { Brand = Brand.Apple, Price = 399m }.ToExpectedObject();
             var result = new Phone { Brand = Brand.Apple, Price = 399m };
 
-            expected.ToExpectedObject().ShouldMatch(result);
+            expected.ShouldMatch(result);
         }
 
         [Fact]
@@ -171,7 +171,7 @@ namespace DotNETCore.Lab.UnitTests
                 new { Brand = Brand.Apple, Price = 399m, Series = "X" },
                 new { Brand = Brand.Sony, Price = 299m, Series = "Xperia" },
                 new { Brand = Brand.Asus, Price = 100m, Series = "ZenPhone" }
-            };
+            }.ToExpectedObject();
 
             var result = new List<Phone>
             {
@@ -181,7 +181,7 @@ namespace DotNETCore.Lab.UnitTests
             };
 
             // 不比較順序
-            expected.ToExpectedObject().ShouldMatch(result);
+            expected.ShouldMatch(result);
         }
 
         [Fact]
@@ -193,7 +193,7 @@ namespace DotNETCore.Lab.UnitTests
                 new { Brand = Brand.Sony, Price = 299m} ,
                 new { Brand = Brand.Apple, Price = 399m },
                 new { Brand = Brand.Asus, Price = 100m }
-            };
+            }.ToExpectedObject(x => x.UseOrdinalComparison());
 
             var result = new List<Phone>
             {
@@ -203,7 +203,7 @@ namespace DotNETCore.Lab.UnitTests
             };
 
             // 比較順序
-            expected.ToExpectedObject(x => x.UseOrdinalComparison()).ShouldMatch(result);
+            expected.ShouldMatch(result);
         }
 
         #endregion ExpectedObjects

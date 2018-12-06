@@ -67,14 +67,14 @@ namespace DotNETCore.Lab.UnitTests.Lab3_Assertion
                 new { Id = 1, ItemName = "Shoes", Price= 2000 },
                 new { Id = 2, ItemName = "Bag", Price= 500 },
                 new { Id = 3, ItemName = "Wallet", Price= 180 }
-            };
+            }.ToExpectedObject();
 
             // Act
             var result = unitUnderTest.GetOrders();
 
             // Assert
             var okObjectResult = Assert.IsType<OkObjectResult>(result);
-            expected.ToExpectedObject().ShouldMatch(okObjectResult.Value);
+            expected.ShouldMatch(okObjectResult.Value);
         }
 
         [Fact]
