@@ -1,9 +1,9 @@
-using DotNETCore.Lab.Lab3_Assertion;
+using DotNETCore.Lab.Lab4_Assertion;
 using ExpectedObjects;
 using System;
 using Xunit;
 
-namespace DotNETCore.Lab.UnitTests.Lab3_Assertion
+namespace DotNETCore.Lab.UnitTests.Lab4_Assertion
 {
     public class MyServiceTests
     {

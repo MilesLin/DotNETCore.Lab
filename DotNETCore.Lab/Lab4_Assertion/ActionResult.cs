@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DotNETCore.Lab.Lab3_Assertion
+namespace DotNETCore.Lab.Lab4_Assertion
 {
     public class ActionResult
     {
